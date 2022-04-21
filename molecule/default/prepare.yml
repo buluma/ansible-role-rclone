@@ -8,3 +8,4 @@
   - role: buluma.bootstrap
   # - role: buluma.openssl
   - role: buluma.core_dependencies
+  - role: buluma.ca_certificates
