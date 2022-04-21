@@ -6,5 +6,5 @@
 
   roles:
   - role: buluma.bootstrap
-  - role: buluma.openssl
+  # - role: buluma.openssl
   # - role: buluma.buildtools
