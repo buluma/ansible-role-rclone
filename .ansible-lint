@@ -10,5 +10,5 @@ exclude_paths:
   - ./.tox
   - ./.cache
 
-skip_list:
-  - fqcn-builtins  # Use FQCN for builtin actions.
+skip_list:  # or 'skip_list' to silence them completely
+  - fqcn-builtins
