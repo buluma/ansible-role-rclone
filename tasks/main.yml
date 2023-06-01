@@ -61,7 +61,7 @@
     - rclone_release == 'beta'
 
 - name: Install the binary
-  include_tasks: install-bin.yml
+  ansible.builtin.import_tasks: install-bin.yml
   when: (((not ansible_local.rclone.installed|d())|bool) or (ansible_local.rclone.installed_version|d("0.0.0")) != rclone_version)
 
 - name: Install configs

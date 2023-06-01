@@ -26,11 +26,11 @@
     mode: '0775'
 
 - name: install-bin | Do beta install
-  include_tasks: beta.yml
+  ansible.builtin.import_tasks: beta.yml
   when: rclone_release == 'beta'
 
 - name: install-bin | Do stable install
-  include_tasks: stable.yml
+  ansible.builtin.import_tasks: stable.yml
   when: rclone_release == 'stable'
 
 - name: install-bin | Get list of files extracted from the rclone archive

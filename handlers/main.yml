@@ -1,4 +1,4 @@
 ---
 
 - name: Update facts
-  action: setup
+  ansible.builtin.action: setup
