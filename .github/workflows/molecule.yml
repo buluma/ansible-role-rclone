@@ -6,11 +6,19 @@
 name: Ansible Molecule
 
 on:
-  # Schedule updates (once daily)
+  push:
+    branches:
+      - master
+      - main
+      - testing
+    paths-ignore:
+      - '**/README.md'
+      - '**/CHANGELOG.md'
+    tags_ignore:
+      - '*'
+  pull_request:
   schedule:
-    - cron: '35 18 * * *'
-  workflow_dispatch:
-  push: {branches: ["master", "main"]}
+    - cron: '35 18 18 * *'
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -22,12 +30,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-        with:
-          path: "${{ github.repository }}"
-      - name: molecule
-        uses: buluma/molecule-action@v4.0.7
-        with:
-          command: lint
+      - name: ansible-lint
+        uses: ansible-community/ansible-lint-action@main
   test:
     needs:
       - lint
@@ -37,25 +41,25 @@ jobs:
       matrix:
         config:
           - image: "enterpriselinux"
-            tag: "latest"
+            tag: "8"
           - image: "debian-systemd"
             tag: "latest"
-          - image: "debian-systemd"
-            tag: "bookworm"
           - image: "fedora-systemd"
-            tag: "34"
+            tag: "36"
           - image: "fedora-systemd"
-            tag: "35"
+            tag: "37"
           - image: "fedora-systemd"
             tag: "latest"
           - image: "docker-ubuntu-systemd"
             tag: "latest"
-          - image: "docker-ubuntu-systemd"
-            tag: "bionic"
           - image: "docker-ubuntu-systemd"
             tag: "focal"
           - image: "docker-ubuntu-systemd"
-            tag: "jammy"
+            tag: "bionic"
+          - image: "docker-ubuntu-systemd"
+            tag: "lunar"
+          - image: "kali"
+            tag: "latest"
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -66,7 +70,7 @@ jobs:
       - name: parse apparmor for mysql
         run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
       - name: molecule
-        uses: buluma/molecule-action@v4.0.7
+        uses: buluma/molecule-action@v5.0.7
         with:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}

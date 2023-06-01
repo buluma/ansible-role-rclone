@@ -9,11 +9,11 @@ galaxy_info:
   description: Install rclone on your system.
   company: ShadowNet
   license: Apache-2.0
-  min_ansible_version: 2.10
+  min_ansible_version: "2.12"
   platforms:
     - name: EL
       versions:
-        - 8
+        - "8"
     - name: Debian
       versions:
         - all
@@ -21,6 +21,9 @@ galaxy_info:
       versions:
         - all
     - name: Ubuntu
+      versions:
+        - all
+    - name: Kali
       versions:
         - all
   galaxy_tags:

@@ -9,6 +9,11 @@ exclude_paths:
   - ./molecule/default/collections.yml
   - ./.tox
   - ./.cache
+  - ./.github
+  - ./requirements.yml
 
-skip_list:  # or 'skip_list' to silence them completely
-  - fqcn-builtins
+skip_list:
+  - yaml[truthy]
+
+enable_list:
+  - name[prefix]
