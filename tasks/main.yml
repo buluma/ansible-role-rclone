@@ -66,6 +66,7 @@
 
 - name: Install configs
   when: rclone_configs is defined
+  become: true
   block:
     - name: Create config directory
       ansible.builtin.file:
@@ -78,4 +79,3 @@
         src: rclone.conf.j2
         dest: '{{ rclone_config_location }}'
         mode: 0600
-  become: true
