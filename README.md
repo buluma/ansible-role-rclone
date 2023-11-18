@@ -1,10 +1,10 @@
-# [rclone](#rclone)
+# [Ansible role rclone](#rclone)
 
 Install rclone on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-rclone/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-rclone/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-rclone/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-rclone)|[![quality](https://img.shields.io/ansible/quality/58878)](https://galaxy.ansible.com/buluma/rclone)|[![downloads](https://img.shields.io/ansible/role/d/58878)](https://galaxy.ansible.com/buluma/rclone)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-rclone.svg)](https://github.com/buluma/ansible-role-rclone/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-rclone.svg)](https://github.com/buluma/ansible-role-rclone/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-rclone.svg)](https://github.com/buluma/ansible-role-rclone/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-rclone/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-rclone/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-rclone/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-rclone)|[![downloads](https://img.shields.io/ansible/role/d/4814)](https://galaxy.ansible.com/buluma/rclone)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-rclone.svg)](https://github.com/buluma/ansible-role-rclone/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-rclone.svg)](https://github.com/buluma/ansible-role-rclone/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-rclone.svg)](https://github.com/buluma/ansible-role-rclone/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
