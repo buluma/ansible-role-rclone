@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/buluma/ansible-role-rclone/tree/HEAD)
 
-[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v0.1.2...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v0.1.3...HEAD)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#12](https://github.com/buluma/ansible-role-rclone/issues/12)
+
+## [v0.1.3](https://github.com/buluma/ansible-role-rclone/tree/v0.1.3) (2023-12-25)
+
+[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v0.1.2...v0.1.3)
 
 **Closed issues:**
 
