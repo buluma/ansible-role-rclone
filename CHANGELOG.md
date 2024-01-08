@@ -1,12 +1,16 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-rclone/tree/HEAD)
+## [v0.2.0](https://github.com/buluma/ansible-role-rclone/tree/v0.2.0) (2024-01-02)
 
-[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v0.1.3...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v0.1.3...v0.2.0)
 
 **Closed issues:**
 
 - Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#12](https://github.com/buluma/ansible-role-rclone/issues/12)
+
+**Merged pull requests:**
+
+- Bump actions/checkout from 3 to 4 [\#13](https://github.com/buluma/ansible-role-rclone/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.1.3](https://github.com/buluma/ansible-role-rclone/tree/v0.1.3) (2023-12-25)
 
