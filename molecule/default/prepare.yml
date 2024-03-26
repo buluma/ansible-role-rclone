@@ -1,11 +1,10 @@
 ---
 - name: Prepare
   hosts: all
-  gather_facts: no
-  become: yes
+  gather_facts: false
+  become: true
 
   roles:
-  - role: buluma.bootstrap
-  # - role: buluma.openssl
-  - role: buluma.core_dependencies
-  - role: buluma.ca_certificates
+    - role: buluma.bootstrap
+    - role: buluma.core_dependencies
+    - role: buluma.ca_certificates
