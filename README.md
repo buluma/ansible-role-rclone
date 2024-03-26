@@ -47,14 +47,13 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  gather_facts: no
-  become: yes
+  gather_facts: false
+  become: true
 
   roles:
-  - role: buluma.bootstrap
-  # - role: buluma.openssl
-  - role: buluma.core_dependencies
-  - role: buluma.ca_certificates
+    - role: buluma.bootstrap
+    - role: buluma.core_dependencies
+    - role: buluma.ca_certificates
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -75,7 +74,7 @@ rclone_version: '{{ ansible_local.rclone.version | d("0.0.0") }}'
 
 install_manpages: true
 
-# Defaults in case no variables for OS are chosen
+# Defaults in case false variables for OS are chosen
 rclone_setup_tmp_dir: "/tmp/rclone_setup"
 
 # The location to install the config file if configured
