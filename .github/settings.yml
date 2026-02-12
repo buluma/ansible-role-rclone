@@ -5,4 +5,4 @@
 repository:
   description: Install rclone on your system.
   homepage: https://buluma.github.io/
-  topics: networking, system, ansible, molecule, tox, playbook
+  topics: networking, system, ansible, molecule, playbook
