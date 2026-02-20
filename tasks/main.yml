@@ -2,9 +2,9 @@
 - name: Gather OS specific variables
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
-    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
-    - '{{ ansible_distribution }}.yml'
-    - '{{ ansible_os_family }}.yml'
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
   tags:
     - vars
 
@@ -18,9 +18,9 @@
 - name: Create facts file from template
   become: true
   ansible.builtin.template:
-    src: 'etc/ansible/facts.d/rclone.fact.j2'
+    src: "etc/ansible/facts.d/rclone.fact.j2"
     dest: /etc/ansible/facts.d/rclone.fact
-    mode: '0755'
+    mode: "0755"
   notify: Update facts
 
 - name: Re-read facts after adding custom fact
@@ -37,12 +37,11 @@
       ansible.builtin.uri:
         url: https://downloads.rclone.org/version.txt
         return_content: true
-      register:
-        rclone_latest_version
+      register: rclone_latest_version
       check_mode: false
     - name: Set variable to latest stable version number
       ansible.builtin.set_fact:
-        rclone_version: "{{ rclone_latest_version.content | replace ('rclone v', '', 1) | trim }}"
+        rclone_version: "{{ rclone_latest_version.content | replace('rclone v', '', 1) | trim }}"
 
 - name: Rclone beta version checks
   when:
@@ -53,11 +52,10 @@
       ansible.builtin.uri:
         url: https://beta.rclone.org/version.txt
         return_content: true
-      register:
-        rclone_latest_beta_version
+      register: rclone_latest_beta_version
     - name: Set variable for beta version
       ansible.builtin.set_fact:
-        rclone_version: "{{ rclone_latest_beta_version.content | replace ('rclone v', '', 1) | trim }}"
+        rclone_version: "{{ rclone_latest_beta_version.content | replace('rclone v', '', 1) | trim }}"
         beta_version_url: https://beta.rclone.org/rclone-beta-latest-linux-{{ rclone_arch }}.zip
 
 - name: Install the binary
@@ -70,12 +68,12 @@
   block:
     - name: Create config directory
       ansible.builtin.file:
-        path: '{{ rclone_config_location | dirname }}'
+        path: "{{ rclone_config_location | dirname }}"
         state: directory
-        mode: '0700'
+        mode: "0700"
 
     - name: Set up rclone config
       ansible.builtin.template:
         src: rclone.conf.j2
-        dest: '{{ rclone_config_location }}'
-        mode: 0600
+        dest: "{{ rclone_config_location }}"
+        mode: "0600"

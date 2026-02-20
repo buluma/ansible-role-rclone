@@ -7,4 +7,4 @@ rclone_packages:
 rclone_man_pages:
   OWNER: root
   GROUP: root
-  PATH: '/usr/share/man/man1'
+  PATH: "/usr/share/man/man1"

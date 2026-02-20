@@ -7,10 +7,10 @@
 
 - name: install-bin | Install required packages
   ansible.builtin.package:
-    name: '{{ item }}'
+    name: "{{ item }}"
     state: present
   become: true
-  with_items: '{{ rclone_packages }}'
+  with_items: "{{ rclone_packages }}"
 
 - name: install-bin | Remove temporary working directory
   ansible.builtin.file:
@@ -23,7 +23,7 @@
   ansible.builtin.file:
     path: "{{ rclone_setup_tmp_dir }}"
     state: directory
-    mode: '0775'
+    mode: "0775"
 
 - name: install-bin | Do beta install
   ansible.builtin.import_tasks: beta.yml
@@ -44,7 +44,7 @@
   ansible.builtin.copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
     dest: "/usr/local/bin/rclone"
-    mode: '0755'
+    mode: "0755"
     owner: root
     group: root
     remote_src: true
@@ -52,11 +52,11 @@
 
 - name: install-bin | Make dir for local manpages
   ansible.builtin.file:
-    path: '{{ rclone_man_pages.PATH }}'
+    path: "{{ rclone_man_pages.PATH }}"
     state: directory
-    mode: '0775'
-    owner: '{{ rclone_man_pages.OWNER }}'
-    group: '{{ rclone_man_pages.GROUP }}'
+    mode: "0775"
+    owner: "{{ rclone_man_pages.OWNER }}"
+    group: "{{ rclone_man_pages.GROUP }}"
   become: true
   when: install_manpages
 
@@ -64,7 +64,7 @@
   ansible.builtin.copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
     dest: "{{ rclone_man_pages.PATH }}/rclone.1"
-    mode: '0644'
+    mode: "0644"
     owner: root
     group: root
     remote_src: true
