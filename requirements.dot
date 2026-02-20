@@ -1,0 +1,15 @@
+digraph PhiloDilemma {
+  label = "Michael Buluma" ;
+  overlap=false
+  {
+    "rclone" [fillcolor=yellow style=filled penwidth=3]
+    "buluma.bootstrap" [fillcolor=green style=filled]
+    "buluma.openssl" [fillcolor=green style=filled]
+    "buluma.core_dependencies" [fillcolor=green style=filled]
+    "buluma.ca_certificates" [fillcolor=green style=filled]
+  }
+  "rclone" -> "buluma.bootstrap"
+  "rclone" -> "buluma.openssl"
+  "rclone" -> "buluma.core_dependencies"
+  "rclone" -> "buluma.ca_certificates"
+}
