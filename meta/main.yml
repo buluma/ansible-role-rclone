@@ -2,12 +2,14 @@
 dependencies: []
 galaxy_info:
   author: Michael buluma
-  namespace: buluma
-  role_name: rclone
-  description: Install rclone on your system.
   company: ShadowNet
+  description: Install rclone on your system.
+  galaxy_tags:
+    - networking
+    - system
   license: Apache-2.0
   min_ansible_version: "2.12"
+  namespace: buluma
   platforms:
     - name: EL
       versions:
@@ -24,6 +26,4 @@ galaxy_info:
     - name: Kali
       versions:
         - all
-  galaxy_tags:
-    - networking
-    - system
+  role_name: rclone

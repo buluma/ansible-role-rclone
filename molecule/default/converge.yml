@@ -1,28 +1,22 @@
----
-- name: Converge
+- become: true
   hosts: all
-  become: true
-
+  name: Converge
   pre_tasks:
+  - apt: update_cache=true cache_valid_time=600
+    name: Update apt cache.
+    when: ansible_os_family == 'Debian'
+  - changed_when: false
+    command: systemctl is-system-running
+    delay: 5
+    name: Wait for systemd to complete initialization.
+    register: systemctl_status
+    retries: 30
+    until: '''running'' in systemctl_status.stdout or ''degraded'' in systemctl_status.stdout
 
-    - name: Update apt cache.
-      apt: update_cache=true cache_valid_time=600
-      when: ansible_os_family == 'Debian'
-
-    - name: Wait for systemd to complete initialization.     # noqa 303
-      command: systemctl is-system-running
-      register: systemctl_status
-      until: >
-        'running' in systemctl_status.stdout or
-        'degraded' in systemctl_status.stdout
-      retries: 30
-      delay: 5
-      when: ansible_distribution == 'Fedora'
-      changed_when: false
-
-    - name: Show ansible version
-      ansible.builtin.debug:
-        msg: "Ansible Version: {{ ansible_version.full }}"
-
+      '
+    when: ansible_distribution == 'Fedora'
+  - ansible.builtin.debug:
+      msg: 'Ansible Version: {{ ansible_version.full }}'
+    name: Show ansible version
   roles:
-    - role: buluma.rclone
+  - role: buluma.rclone
