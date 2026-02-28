@@ -65,7 +65,7 @@ rclone_man_pages:
   GROUP: root
   OWNER: root
 rclone_packages:
-- unzip
+  - unzip
 rclone_release: stable
 rclone_setup_tmp_dir: /tmp/rclone_setup
 rclone_version: '{{ ansible_local.rclone.version | d("0.0.0") }}'
@@ -120,3 +120,4 @@ If you find issues, please register them on [GitHub](https://github.com/buluma/a
 ## [Author Information](#author-information)
 
 [Michael buluma](https://buluma.github.io/)
+
