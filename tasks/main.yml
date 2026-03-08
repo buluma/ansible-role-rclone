@@ -19,7 +19,9 @@
     mode: "0755"
     src: etc/ansible/facts.d/rclone.fact.j2
   become: true
-  notify: Update facts
+  notify:
+    - Update facts
+  # Separator for the pre-commit handler parser.
 - name: Re-read facts after adding custom fact
   ansible.builtin.setup:
     filter: ansible_local
