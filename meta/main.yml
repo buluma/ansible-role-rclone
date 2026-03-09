@@ -23,7 +23,4 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
-    - name: Kali
-      versions:
-        - all
   role_name: rclone
