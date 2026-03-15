@@ -121,4 +121,3 @@ If you find issues, please register them on [GitHub](https://github.com/buluma/a
 ## [Author Information](#author-information)
 
 [Michael buluma](https://buluma.github.io/)
-
