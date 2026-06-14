@@ -1,13 +1,19 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-rclone/tree/HEAD)
+## [v26.6.0](https://github.com/buluma/ansible-role-rclone/tree/v26.6.0) (2026-06-14)
 
-[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v24.3.31...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-rclone/compare/v24.3.31...v26.6.0)
 
 **Closed issues:**
 
 - Update action [\#11](https://github.com/buluma/ansible-role-rclone/issues/11)
 - rebuild action [\#10](https://github.com/buluma/ansible-role-rclone/issues/10)
+
+**Merged pull requests:**
+
+- Bump docker/setup-buildx-action from 3 to 4 [\#31](https://github.com/buluma/ansible-role-rclone/pull/31) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump ansible/ansible-lint from 26.1.1 to 26.2.0 [\#30](https://github.com/buluma/ansible-role-rclone/pull/30) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 4 to 6 [\#29](https://github.com/buluma/ansible-role-rclone/pull/29) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v24.3.31](https://github.com/buluma/ansible-role-rclone/tree/v24.3.31) (2024-03-29)
 
