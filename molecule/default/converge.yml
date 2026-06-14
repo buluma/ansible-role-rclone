@@ -1,5 +1,6 @@
 ---
 - become: true
+- name: Converge
   hosts: all
   name: Converge
   pre_tasks:
