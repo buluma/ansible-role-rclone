@@ -1,7 +1,7 @@
 ---
 dependencies: []
 galaxy_info:
-  author: Michael buluma
+  author: buluma
   company: ShadowNet
   description: Install rclone on your system.
   galaxy_tags:
