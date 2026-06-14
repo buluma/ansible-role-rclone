@@ -15,6 +15,7 @@
           - remote_file.stat.mode == '0755'
       name: rclone - assert that file is created correctly
     - command: /usr/local/bin/rclone version
+    changed_when: false
       name: rclone - check version
       register: shell_result
     - debug:
