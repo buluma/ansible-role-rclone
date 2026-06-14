@@ -9,4 +9,4 @@ rclone_packages:
   - unzip
 rclone_release: stable
 rclone_setup_tmp_dir: /tmp/rclone_setup
-rclone_version: '{{ ansible_local.rclone.version | d("0.0.0") }}'
+rclone_version: '{{ ansible_facts.local.rclone.version | d("0.0.0") }}'

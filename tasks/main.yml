@@ -4,9 +4,9 @@
   tags:
     - vars
   with_first_found:
-    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-    - "{{ ansible_distribution }}.yml"
-    - "{{ ansible_os_family }}.yml"
+    - "{{ ansible_facts.distribution }}-{{ ansible_facts.distribution_major_version }}.yml"
+    - "{{ ansible_facts.distribution }}.yml"
+    - "{{ ansible_facts.os_family }}.yml"
 - name: Create directory for ansible custom facts
   ansible.builtin.file:
     path: /etc/ansible/facts.d
@@ -24,7 +24,7 @@
   # Separator for the pre-commit handler parser.
 - name: Re-read facts after adding custom fact
   ansible.builtin.setup:
-    filter: ansible_local
+    filter: ansible_facts.local
   become: true
 - name: Rclone version checks
   when:
@@ -56,7 +56,7 @@
         rclone_version: "{{ rclone_latest_beta_version.content | replace('rclone v', '', 1) | trim }}"
 - name: Install the binary
   ansible.builtin.import_tasks: install-bin.yml
-  when: (((not ansible_local.rclone.installed|d())|bool) or (ansible_local.rclone.installed_version|d("0.0.0")) != rclone_version)
+  when: (((not ansible_facts.local.rclone.installed|d())|bool) or (ansible_facts.local.rclone.installed_version|d("0.0.0")) != rclone_version)
 - name: Install configs
   become: true
   when: rclone_configs is defined
