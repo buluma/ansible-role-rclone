@@ -12,27 +12,30 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- become: true
+- name: Converge
   hosts: all
-  name: Converge
+  become: true
+  gather_facts: true
+
   pre_tasks:
-    - apt: update_cache=true cache_valid_time=600
-      name: Update apt cache.
-      when: ansible_os_family == 'Debian'
-    - changed_when: false
-      command: systemctl is-system-running
+    - name: Update apt cache.
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 600
+      when: ansible_facts['os_family'] == 'Debian'
+    - name: Wait for systemd to complete initialization.
+      ansible.builtin.command:
+        cmd: systemctl is-system-running
+      changed_when: false
       delay: 5
-      name: Wait for systemd to complete initialization.
       register: systemctl_status
       retries: 30
-      until:
-        "'running' in systemctl_status.stdout or 'degraded' in systemctl_status.stdout
-
-        "
-      when: ansible_distribution == 'Fedora'
-    - ansible.builtin.debug:
+      until: "'running' in systemctl_status.stdout or 'degraded' in systemctl_status.stdout"
+      when: ansible_facts['distribution'] == 'Fedora'
+    - name: Show ansible version
+      ansible.builtin.debug:
         msg: "Ansible Version: {{ ansible_version.full }}"
-      name: Show ansible version
+
   roles:
     - role: buluma.rclone
 ```
@@ -41,10 +44,18 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 
 ```yaml
 ---
-- become: true
-  gather_facts: false
+- name: Prepare
   hosts: all
-  name: Prepare
+  become: true
+  gather_facts: false
+
+  pre_tasks:
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo}"
+      become: false
+      changed_when: false
+      failed_when: false
+
   roles:
     - role: buluma.bootstrap
     - role: buluma.core_dependencies
@@ -69,7 +80,7 @@ rclone_packages:
   - unzip
 rclone_release: stable
 rclone_setup_tmp_dir: /tmp/rclone_setup
-rclone_version: '{{ ansible_local.rclone.version | d("0.0.0") }}'
+rclone_version: "{{ ansible_local.rclone.version | default('0.0.0') }}"
 ```
 
 ## [Requirements](#requirements)
@@ -97,14 +108,14 @@ Here is an overview of related roles:
 
 ## [Compatibility](#compatibility)
 
-This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
 
 |container|tags|
 |---------|----|
-|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|all|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|all|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
-|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
+|[EL](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Debian](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Fedora](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Ubuntu](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
 
 The minimum version of Ansible required is 2.12, tests have been done on:
 
@@ -120,8 +131,5 @@ If you find issues, please register them on [GitHub](https://github.com/buluma/a
 
 ## [Author Information](#author-information)
 
-[Michael buluma](https://buluma.github.io/)
+[buluma](https://buluma.github.io/)
 
-### Get Help
-- Report issues: https://github.com/buluma/ansible-role-rclone/issues/new
-- See docs: https://docs.ansible.com/collection/gallery/ansible-role-rclone
