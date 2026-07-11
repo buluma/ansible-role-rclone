@@ -21,7 +21,7 @@
   become: true
   notify:
     - Update facts
-  # Separator for the pre-commit handler parser.
+# Separator for the pre-commit handler parser.
 - name: Re-read facts after adding custom fact
   ansible.builtin.setup:
     filter: ansible_facts['local']
